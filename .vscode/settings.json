@@ -9,5 +9,16 @@
         "/home/rick/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages",
         "/home/rick/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.8/site-packages",
         "/opt/ros/foxy/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/rick/ros2_ws/install/rtabmap_ros/lib/python3.8/site-packages",
+        "/home/rick/ros2_ws/install/my_package/lib/python3.8/site-packages",
+        "/home/rick/turtlebot3_ws/build/turtlebot3_teleop",
+        "/home/rick/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages",
+        "/home/rick/turtlebot3_ws/build/turtlebot3_example",
+        "/home/rick/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages",
+        "/home/rick/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages",
+        "/home/rick/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
     ]
 }

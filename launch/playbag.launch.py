@@ -17,7 +17,7 @@ def generate_launch_description():
 
 
         launch.actions.ExecuteProcess(
-            cmd=['ros2', 'bag', 'play', 'rosbag2_2022_11_03-13_03_34'],
+            cmd=['ros2', 'bag', 'play', 'rosbag2_2022_11_03-13_48_22'],
             output='screen',
             #remappings=remappings_bag
             ),

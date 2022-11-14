@@ -30,3 +30,22 @@ ros2 launch rtabmap_ros rtabmap.launch.py \
     
 ros2 bag play rosbag2_2022_09_14-11_48_42
 ros2 bag play rosbag2_2022_11_03-13_03_34
+\ on remote desktop
+ros2 bag play rosbag2_2022_11_03-13_48_22
+
+
+
+output 
+
+[rgbd_odometry-3] [WARN] [1668440422.323106142] [rtabmap.rgbd_odometry]: rgbd_odometry: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. Parameter "approx_sync" is false, which means that input topics should have all the exact timestamp for the callback to be called.
+[rgbd_odometry-3] rgbd_odometry subscribed to (approx sync, max interval=0.001000s):
+[rgbd_odometry-3]    /color/image_relay,
+[rgbd_odometry-3]    /stereo/depth_relay,
+[rgbd_odometry-3]    /color/camera_info
+[rtabmap-4] [WARN] [1668440422.627713248] [rtabmap.rtabmap]: rtabmap: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=50). 
+[rtabmap-4] rtabmap subscribed to (approx sync):
+[rtabmap-4]    /rtabmap/odom \
+[rtabmap-4]    /color/image_relay \
+[rtabmap-4]    /stereo/depth_relay \
+[rtabmap-4]    /color/camera_info \
+[rtabmap-4]    /rtabmap/odom_info

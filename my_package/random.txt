@@ -1,0 +1,32 @@
+ros2 launch rtabmap_ros rtabmap.launch.py \
+    rgb_topic:=/color/image \
+    depth_topic:=/stereo/depth \
+    camera_info_topic:=/color/camera_info \
+    imu_topic:=/imu \
+    frame_id:=oak-d_frame \
+    approx_sync:=true \
+    approx_sync_max_interval:=0.001 \
+    wait_imu_to_init:=true \
+    args:="--delete_db_on_start" \
+    compressed:=true \
+    queue_size:=50
+    
+    oak_rgb_camera_optical_frame
+    
+ros2 launch rtabmap_ros rtabmap.launch.py \
+    rgb_topic:=/color/image \
+    depth_topic:=/stereo/depth \
+    camera_info_topic:=/color/camera_info \
+    imu_topic:=/imu \
+    frame_id:=oak_rgb_camera_optical_frame \
+    approx_sync:=true \
+    approx_sync_max_interval:=0.001 \
+    wait_imu_to_init:=true \
+    args:="--delete_db_on_start" \
+    compressed:=true \
+    queue_size:=50 \
+    rviz:=true
+    
+    
+ros2 bag play rosbag2_2022_09_14-11_48_42
+ros2 bag play rosbag2_2022_11_03-13_03_34

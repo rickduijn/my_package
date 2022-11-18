@@ -18,6 +18,7 @@ def generate_launch_description():
         'approx_sync':True,
         'approx_sync_max_interval':'0.01',
         'wait_imu_to_init':True,
+        'visual_odometry':True
 
 
         }]
@@ -33,12 +34,12 @@ def generate_launch_description():
           
     return LaunchDescription([
 
-        # Nodes to launch
-        Node(
-            package='rtabmap_ros', executable='rgbd_odometry', #output='screen',
-            parameters=parameters,
+       # Nodes to launch
+#       Node(
+#            package='rtabmap_ros', executable='stereo_odometry', output='screen',
+#            parameters=parameters,
 #            remappings=remappings),
-        ),
+ #       ),
         Node(
             package='rtabmap_ros', executable='rtabmap', output='screen',
             parameters=parameters,

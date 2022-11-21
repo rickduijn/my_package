@@ -57,7 +57,7 @@ ros2 launch rtabmap_ros rtabmap.launch.py \
     right_image_topic:=/right/image_rect \
     left_camera_info_topic:=/left/camera_info \
     right_camera_info_topic:=/right/camera_info \
-    imu_topic:=/imu \
+    imu_topic:=/imu/data \
     frame_id:=oak-d_frame \
     approx_sync:=true \
     approx_sync_max_interval:=0.01 \
@@ -65,11 +65,49 @@ ros2 launch rtabmap_ros rtabmap.launch.py \
     database_path:=src \
     rviz:=true
     
-ros2 run imu_filter_madgwick imu_filter_node \
-   imu/data_raw:=/imu \
-   imu/data:=/imu/data  \
-   _use_mag:=false \
-   _publish_tf:=false
+
 
 [rtabmap-2] [WARN] [1668690961.973093305] [rtabmap.rtabmap]: We received odometry message, but we cannot get the corresponding TF odom->oak-d_frame at data stamp 1667479754.474561s (odom msg stamp is 1667479754.474581s). Make sure TF of odometry is also published to get more accurate pose estimation. This warning is only printed once.
 [rtabmap-2] [WARN] [1668690962.149174322] [rtabmap.rtabmap]: We are receiving imu data (buffer=5), but cannot interpolate imu transform at time 1667479756.473500. IMU won't be added to graph.
+
+ros2 run imu_filter_madgwick imu_filter_madgwick_node \
+   imu/data_raw:=/stereo_inertial_publisher/imu \   # input 
+   imu/data:=/stereo_inertial_publisher/imu/data  \  #output
+   _use_mag:=false \
+   _publish_tf:=false
+
+ROS_NAMESPACE=stereo ros2 launch depthai_examples stereo_inertial_node.launch.py depth_aligned:=false
+
+\ ro run without imu filter
+ros2 run imu_filter_madgwick imu_filter_madgwick_node \
+   imu/data_raw:=/imu \   
+   imu/data:=/stereo_inertial_publisher/imu/data  \  
+   _use_mag:=false \
+   _publish_tf:=false
+
+ros2 launch rtabmap_ros rtabmap.launch.py \
+    args:="--delete_db_on_start" \
+    stereo:=true \
+    left_image_topic:=/left/image_rect \
+    right_image_topic:=/right/image_rect \
+    left_camera_info_topic:=/left/camera_info \
+    right_camera_info_topic:=/right/camera_info \
+    imu_topic:=/imu \
+    frame_id:=oak-d_frame \
+    approx_sync:=true \
+    approx_sync_max_interval:=0.01 \
+    wait_imu_to_init:=true \
+    database_path:=src \
+    rviz:=true
+
+
+ros2 launch rtabmap_ros rtabmap.launch.py \
+    args:="--delete_db_on_start" \
+    stereo:=true \
+    left_image_topic:=/left/image_rect \
+    right_image_topic:=/right/image_rect \
+    left_camera_info_topic:=/left/camera_info \
+    right_camera_info_topic:=/right/camera_info \
+    imu_topic:=/imu \
+    frame_id:=oak-d_frame \
+    approx_sync:=true

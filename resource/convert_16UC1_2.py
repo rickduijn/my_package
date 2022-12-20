@@ -55,13 +55,13 @@ class ImageSubscriber(Node):
     # Display image
     
     #cv2.imshow("camera", im_color)
-    cv2.imshow("cameraGray", img_n)
+    #cv2.imshow("cameraGray", current_frame)
 
     #publish image on ROS
-    #pub_img = self.br.cv2_to_imgmsg(im_color)
-    #self.publisher.publish(pub_img)
+    pub_img = self.br.cv2_to_imgmsg(current_frame)
+    self.publisher.publish(pub_img)
 
-    cv2.waitKey(1)
+    #cv2.waitKey(1)
   
 def main(args=None):
   

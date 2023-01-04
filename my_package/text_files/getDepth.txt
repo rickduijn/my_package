@@ -1,0 +1,4 @@
+spatial_location_calculator.py
+    Calculate depth within a box 
+    https://docs.luxonis.com/projects/api/en/latest/components/nodes/spatial_location_calculator/
+
